@@ -86,11 +86,63 @@ int Valeur_moyenne(int* Liste){
     return temp/size;
 }
 
+int Deux_Valeur_minimale(int* Liste){
+    int petit=Valeur_maximale(Liste);
+    int index;
+    int pluspetit=Liste[0];
+    for (int i = sizeof(Liste)/sizeof(int); i > 0; i--){
+        if(pluspetit>Liste[i]){
+            pluspetit=Liste[i];
+            index=i;
+        }
+    }
+    for (int i = sizeof(Liste)/sizeof(int); i > 0; i--){
+        if(petit>Liste[i]&&i!=index){
+            petit=Liste[i];
+        }
+    }
+    printf("Valeur la plus petite :%d \nDeuxieme valeur la plus petite :%d \n",pluspetit,petit);
+    return 0;
+}
+
+int* FusionDeTableaux(){
+    int x;
+    printf("Entrer le nombre de chiffre que vous souhaiterez entrer :\n");
+    scanf("%d",&x);
+    int* tab1 = (int*)malloc(x*sizeof(int));
+    int* tab2 = (int*)malloc(x*sizeof(int));
+    int* tab3 = (int*)malloc(x*sizeof(int));
+    for (int i = 0; i < x; i++)
+    {
+        int temp;
+        printf("Entre le %d nombre (du tableau 1):",i);
+        scanf("%d",&temp);
+        tab1[i]= temp;
+    }
+    for (int i = 0; i < x; i++)
+    {
+        int temp;
+        printf("Entre le %d nombre (du tableau 2):",i);
+        scanf("%d",&temp);
+        tab2[i]= temp;
+    }
+    printf("Le nouveau tableau retourné est composé de : (");
+    for (int i = 0; i < x; i++)
+    {
+        tab3[i]= tab1[i]+tab2[i];
+        printf("%d, ",tab3[i]);
+    }
+    printf(")");
+    free(tab1);
+    free(tab2);
+    return tab3; 
+}
+
 int menu(void){
     int x;
     int exit =0;
     while(1){
-    printf("ProposerValeur(0)\nValeur minimale(1)\nValeur maximale(2)\nSomme(3)\nMoyenne(4)\nExit(5)");
+    printf("ProposerNouvellesValeur(0)\nValeur minimale(1)\nValeur maximale(2)\nSomme(3)\nMoyenne(4)\nDeux Valeurs Minimales(5)\nExit(6)");
     scanf("%d",&x);
     switch (x)
     {
@@ -114,6 +166,9 @@ int menu(void){
         printf("La moyenne des valeur proposer est %d\n",moyenne);
         break;
     case 5:
+    Deux_Valeur_minimale(Liste);
+        break;
+    case 6:
         exit=1;
         break;
     default:
@@ -121,6 +176,7 @@ int menu(void){
     }
     if(exit==1){
         break;
+        free(Liste);
     }
     }
 }
@@ -128,6 +184,6 @@ int menu(void){
 
 int main(){
     printf("Hello World\n");
-    menu();
+    FusionDeTableaux();
     return 0;
 }
