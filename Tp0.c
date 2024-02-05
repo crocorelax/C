@@ -1,6 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct {
+    int reel;
+    int imaginaire;
+} complexe;
+
+typedef struct {
+    int jour;
+    int mois;
+    int annee;
+} date;
+
+
 int number_bettween_1_and_3(){
     printf("hey, donne moi un nombre entre 1 et 3 compris stp !");
     int x;
@@ -203,6 +215,7 @@ int calculQetRdeDiv(){
     scanf("%f",&q);
     int* QetR = QetRdeDiv(p,q);
     printf(" le quotient est %d et le reste est %d\n",QetR[0],QetR[1]);
+    free(QetR);
     return 0;
 }
 
@@ -271,3 +284,33 @@ int main(){
     menu();
     return 0;
 }
+
+complexe initComplexe(int reel, int imaginaire ){
+    complexe c;
+    c.reel=reel;
+    c.imaginaire = imaginaire;
+    return c;
+}
+
+
+date initDate(int jour, int mois,int annee ){
+    date d;
+    if(jour<1){
+        d.jour=1;
+    }else if(jour>31){
+        d.jour=31;
+    }else{
+        d.jour=jour;
+    }
+    if(mois<1){
+        d.mois=1;
+    }else if(mois>12){
+        d.mois=12;
+    }else{
+        d.mois = mois;
+    }
+    d.annee = annee;
+    return d;
+}
+
+
