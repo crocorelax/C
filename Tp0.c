@@ -156,11 +156,63 @@ int* KnbPremie(){
     scanf("%d",&x);
 }
 
+
+float moyenne(float a, float b, float c){
+    return (a+b+c)/3;
+}
+
+int afficherMoyenne(){
+    printf("Donne moi trois valeur pour leur moyenne:\n");
+    float a; float b;float c;
+    printf("1:");
+    scanf("%f",&a);
+    printf("2:");
+    scanf("%f",&b);
+    printf("3:");
+    scanf("%f",&c);
+    printf("Voici la moyenne: %f",moyenne(a,b,c));
+    return 0;
+}
+
+float surfaceRectangle(float longueur, float largeur){
+    return longueur*largeur;
+}
+
+int calculSurfaceRectangle(){
+    printf("Donner moi la longueur puis la largeur de votre rectangle\n");
+    float longueur;
+    float largeur;
+    scanf("%f",&longueur);
+    scanf("%f",&largeur);
+    printf("voici la surface du rectangle : %f metre carré\n",surfaceRectangle(longueur,largeur));
+    return 0;
+}
+
+int* QetRdeDiv(int p, int q){
+    int* QetR = (int*)malloc(2*sizeof(int));
+    QetR[0]=(int)(p/q);
+    QetR[1]=(int)(p%q);
+    return QetR;
+}
+
+int calculQetRdeDiv(){
+    printf("donner moi me produit et son diviseur l'un après l'autre\n");
+    int p;
+    int q;
+    scanf("%f",&p);
+    scanf("%f",&q);
+    int* QetR = QetRdeDiv(p,q);
+    printf(" le quotient est %d et le reste est %d\n",QetR[0],QetR[1]);
+    return 0;
+}
+
 int menu(void){
     int x;
     int exit =0;
     while(1){
-    printf("ProposerNouvellesValeur(0)\nValeur minimale(1)\nValeur maximale(2)\nSomme(3)\nMoyenne(4)\nDeux Valeurs Minimales(5)\nFusion De Tableaux(6)\nDelete Element(7)\nExit(10)");
+    printf("-ProposerNouvellesValeur(0)\n-Valeur minimale(1)\n-Valeur maximale(2)\n-Somme(3)\n-Moyenne(4)\n");
+    printf("-Deux Valeurs Minimales(5)\n-Fusion De Tableaux(6)\n-Delete Element(7)\n-Moyenne de 3 element(8)\n");
+    printf("-Surface rectangle(9)\n-Quotient et Rest d'une division(10)\n-Exit(11)");
     scanf("%d",&x);
     switch (x)
     {
@@ -192,7 +244,16 @@ int menu(void){
     case 7:
         DeleteElement(Liste);
         break;
+    case 8:
+        afficherMoyenne();
+        break;
+    case 9:
+        calculSurfaceRectangle();
+        break;
     case 10:
+        calculQetRdeDiv();
+        break;
+    case 11:
         free(Liste);
         exit=1;
         break;
@@ -204,7 +265,6 @@ int menu(void){
     }
     }
 }
-
 
 int main(){
     printf("Hello World\n");
