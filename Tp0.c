@@ -138,11 +138,23 @@ int* FusionDeTableaux(){
     return tab3; 
 }
 
+void DeleteElement(int* Liste){
+    int x;
+    printf("Entrer la case que vous souhaiterez supprimer :\n");
+    scanf("%d",&x);
+    int size = sizeof(Liste)/sizeof(int);
+    for (int i = x; i < size-1; i++)
+    {
+        Liste[i]=  Liste[i+1];
+    }
+    Liste[size]=0;
+}
+
 int menu(void){
     int x;
     int exit =0;
     while(1){
-    printf("ProposerNouvellesValeur(0)\nValeur minimale(1)\nValeur maximale(2)\nSomme(3)\nMoyenne(4)\nDeux Valeurs Minimales(5)\nExit(6)");
+    printf("ProposerNouvellesValeur(0)\nValeur minimale(1)\nValeur maximale(2)\nSomme(3)\nMoyenne(4)\nDeux Valeurs Minimales(5)\nFusion De Tableaux(6)\nDelete Element(7)\nExit(10)");
     scanf("%d",&x);
     switch (x)
     {
@@ -166,9 +178,16 @@ int menu(void){
         printf("La moyenne des valeur proposer est %d\n",moyenne);
         break;
     case 5:
-    Deux_Valeur_minimale(Liste);
+        Deux_Valeur_minimale(Liste);
         break;
     case 6:
+        FusionDeTableaux();
+        break;
+    case 7:
+        DeleteElement(Liste);
+        break;
+    case 10:
+        free(Liste);
         exit=1;
         break;
     default:
@@ -176,7 +195,6 @@ int menu(void){
     }
     if(exit==1){
         break;
-        free(Liste);
     }
     }
 }
@@ -184,6 +202,6 @@ int menu(void){
 
 int main(){
     printf("Hello World\n");
-    FusionDeTableaux();
+    
     return 0;
 }
