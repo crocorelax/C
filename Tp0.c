@@ -150,6 +150,12 @@ void DeleteElement(int* Liste){
     Liste[size]=0;
 }
 
+int* KnbPremie(){
+    int x;
+    printf("Entrer la quantité de nombre premier souhaité :\n");
+    scanf("%d",&x);
+}
+
 int menu(void){
     int x;
     int exit =0;
@@ -202,6 +208,6 @@ int menu(void){
 
 int main(){
     printf("Hello World\n");
-    
+    menu();
     return 0;
 }
