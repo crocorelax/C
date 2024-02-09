@@ -143,32 +143,43 @@ int meilleurePosition(Client * liste, Client * c) {
     }
 
 Client * suppressionClient (Client * liste, int pos){
+    //on supprime rien dans du vide
     if(liste==NULL)return liste;
 
-    Client* c;
+    Client* index = liste;
+
+    //il faut supprimer le premiere element
     if(pos==1){
-        c= liste;
         liste=liste->Suivant;
-        free(c);
+        //pas besoin de supprimer le pointeur de c puisque l'on free le c
+        free(index);
         return liste;
     }
 
+    //il faut supprimer ailleurs
+    Client* precedent ;
     while(pos>1){
-        if(liste->Suivant!=NULL){
-            pos--;
-            liste=liste->Suivant;
-        }else{
+        //on sauvegarde l'element
+        precedent = index;
+
+        //on verifie que si l'on va avance sur l'element null (dernier element) 
+        //c'est que l'on va surement sortir de la liste
+        if(index->Suivant==NULL){
             printf("position en dehors de la liste");
             return liste;
         }
+
+        //on avance
+        pos--;
+        index=index->Suivant;
     }
-    c = liste->Suivant;
 
-    liste->Suivant = c->Suivant;
+    //on affilie l'element precedent à l'element suivant
+    precedent->Suivant=index->Suivant;
 
-    free(c);
+    //on supprime l'element actuel
+    free(index);
     return liste;
-
 }
 
 void cleanMemory(Client* Liste){

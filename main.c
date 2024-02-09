@@ -25,6 +25,10 @@ int main() {
     afficherListe(liste);
     printf("\nDistance parcourue: %f\n", distanceTotale(liste));
 
+    liste = suppressionClient(liste,2);
+    afficherListe(liste);
+    printf("\nDistance parcourue: %f\n", distanceTotale(liste));
+
     cleanMemory(liste);
 
     return 0;
