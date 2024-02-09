@@ -9,7 +9,7 @@
                 "main.c",
                 "liste.c",
                 "-o",
-                "main.exe"
+                "app.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"

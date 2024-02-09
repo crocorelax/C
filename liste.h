@@ -19,5 +19,6 @@ float distanceTotale(Client* liste);
 int meilleurePosition(Client* liste, Client* c);
 Client* insertionClient(Client* liste, Client* c, int pos);
 Client* suppressionClient(Client* liste, int pos);
+void cleanMemory(Client* Liste);
 
 #endif
