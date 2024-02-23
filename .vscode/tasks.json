@@ -7,7 +7,9 @@
             "args": [
                 "-o",
                 "app.exe",
-                "main.c"
+                "main.c",
+                "pileReels.c",
+                "pileOperateurs.c"
             ],
             "options": {
                 "cwd": "${fileDirname}"

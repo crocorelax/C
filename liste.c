@@ -192,6 +192,7 @@ void cleanMemory(Client* Liste){
     return;
 }
 
+/*
 int main(int argc, char const *argv[])
 {
     Client* liste = NULL;
@@ -220,4 +221,4 @@ int main(int argc, char const *argv[])
     cleanMemory(liste);
 
     return 0;
-}
+}*/
